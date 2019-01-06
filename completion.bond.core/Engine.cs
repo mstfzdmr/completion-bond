@@ -23,7 +23,20 @@ namespace completion.bond.core
 
         public void Run()
         {
-            Task.Factory.StartNew(() => { }, TaskCreationOptions.LongRunning);
+            Task.Factory.StartNew(() => {
+                foreach (var model in this.blockingCollection.GetConsumingEnumerable(this.cancellationTokenSource.Token))
+                {
+                    try
+                    {
+                        //sequence of operations 
+                    }
+                    catch
+                    {
+                        this.Add(model);
+                        Thread.Sleep(200);
+                    }
+                }
+            }, TaskCreationOptions.LongRunning);
         }
 
         public void Stop()
