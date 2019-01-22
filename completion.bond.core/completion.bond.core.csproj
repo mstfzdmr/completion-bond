@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Authors>Mustafa Ozdemir</Authors>
+    <Company>Codesology Technology</Company>
+    <Description>The same is repeated until the data reaches the final destination resulting.</Description>
+    <PackageTags>blockingcollection</PackageTags>
+    <PackageProjectUrl>https://github.com/mstfzdmr/completion-bond</PackageProjectUrl>
+    <Copyright />
+    <RepositoryUrl>https://github.com/mstfzdmr/completion-bond</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
