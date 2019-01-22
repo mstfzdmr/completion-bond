@@ -1,6 +1,7 @@
 # completion-bond
 The same is repeated until the data reaches the final destination resulting.
 
+<pre>Install-Package completion.bond.core</pre>
 
 #### Example usage:
 
