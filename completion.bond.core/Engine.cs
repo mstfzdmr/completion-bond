@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,14 +22,14 @@ namespace completion.bond.core
             this.blockingCollection.Add(model);
         }
 
-        public void Run()
+        public void Run(Action<TModel> action)
         {
             Task.Factory.StartNew(() => {
                 foreach (var model in this.blockingCollection.GetConsumingEnumerable(this.cancellationTokenSource.Token))
                 {
                     try
                     {
-                        //sequence of operations 
+                        action(model);
                     }
                     catch
                     {

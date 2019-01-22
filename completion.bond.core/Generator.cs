@@ -6,10 +6,10 @@ namespace completion.bond.core
     {
         private readonly IEngine<TModel> _engine;
         private bool isDisposed;
-        public Generator()
+        public Generator(Action<TModel> _action)
         {
             this._engine = new Engine<TModel>();
-            this._engine.Run();
+            this._engine.Run(_action);
         }
 
         public void Create(TModel model)
