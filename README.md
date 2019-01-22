@@ -15,13 +15,15 @@ public class Product
 
 public interface IProductService
 {
-    void InsertProduct(Product product);
+    bool InsertProduct(Product product);
 }
 
 public class ProductService : IProductService
 {
-    public void InsertProduct(Product product)
-    {        
+    public bool InsertProduct(Product product)
+    {
+        //sequence of operations 
+        return true;
     }
 }
 
@@ -30,7 +32,13 @@ private void ExecutableMethod(Product product)
     _productService.InsertProduct(product);
 }
 
-new Action<Product>(ExecutableMethod).Invoke(product);
-var productQueue = new Generator<Product>(ExecutableMethod);
-productQueue.Create(product);
+var result = _productService.InsertProduct(product);
+if (!result)
+{
+    //enqueue - keep trying 
+    new Action<Product>(ExecutableMethod).Invoke(product);
+    var productQueue = new Generator<Product>(ExecutableMethod);
+    productQueue.Create(product);
+}
+
 ```
